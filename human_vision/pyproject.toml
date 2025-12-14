@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "human_vision"
+version = "0.1.0"
+description = "Pythonic computer vision toolkit for humanoid robots"
+authors = [{name = "Codex"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["vision", "robotics", "pose", "mediapipe", "tflite", "onnx"]
+dependencies = [
+  "numpy",
+  "pydantic>=2",
+  "requests",
+  "tqdm",
+  "platformdirs",
+]
+
+[project.optional-dependencies]
+vision = ["opencv-python"]
+mediapipe = ["mediapipe"]
+tflite = ["tflite-runtime"]
+onnx = ["onnxruntime"]
+dev = ["pytest", "ruff", "mypy", "types-requests"]
+
+[project.scripts]
+human-vision = "human_vision.cli:main"
